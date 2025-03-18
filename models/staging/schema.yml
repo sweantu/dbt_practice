@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: staging
+    database: gcp-practice-16925
+    schema: kestra_dataset
+
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
