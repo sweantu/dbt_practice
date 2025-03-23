@@ -20,7 +20,7 @@ select
     cast(tpep_dropoff_datetime as timestamp) as dropoff_datetime,
     
     -- trip info
-    store_and_fwd_flag,
+    cast(store_and_fwd_flag as boolean) as store_and_fwd_flag,
     {{ dbt.safe_cast("passenger_count", api.Column.translate_type("integer")) }} as passenger_count,
     cast(trip_distance as numeric) as trip_distance,
     -- yellow cabs are always street-hail
@@ -41,7 +41,7 @@ from tripdata
 where rn = 1
 
 -- dbt build --select <model.sql> --vars '{'is_test_run: false}'
-{% if var('is_test_run', default=true) %}
+{% if var('is_test_run', default=false) %}
 
   limit 100
 

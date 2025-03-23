@@ -3,11 +3,12 @@ version: 2
 sources:
   - name: staging
     database: gcp-practice-16925
-    schema: kestra_dataset
+    schema: dbt_homework
 
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
+      - name: fhv_tripdata
 
 models:
   - name: stg_green_tripdata
